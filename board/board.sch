@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Connector:USB_B_Micro J2
+L board-rescue:USB_B_Micro-Connector J2
 U 1 1 612154A6
 P 1450 5750
 F 0 "J2" H 1507 6217 50  0000 C CNN
@@ -70,7 +70,7 @@ U 1 1 612D2754
 P 2850 5700
 F 0 "C3" H 2942 5746 50  0000 L CNN
 F 1 "10u" H 2942 5655 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 2850 5700 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2850 5700 50  0001 C CNN
 F 3 "~" H 2850 5700 50  0001 C CNN
 	1    2850 5700
 	1    0    0    -1  
@@ -91,12 +91,12 @@ F 3 "" H 2850 5800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L good_things:NPIC6C595 U5
+L board-rescue:NPIC6C595-good_things U5
 U 1 1 612DB5CE
 P 6150 3650
 F 0 "U5" H 6150 4325 50  0000 C CNN
 F 1 "NPIC6C596" H 6150 4234 50  0000 C CNN
-F 2 "Package_SO:SO-16_3.9x9.9mm_P1.27mm" H 6150 3200 50  0001 C CNN
+F 2 "Package_SO:STC_SOP-16_3.9x9.9mm_P1.27mm" H 6150 3200 50  0001 C CNN
 F 3 "" H 6150 3200 50  0001 C CNN
 	1    6150 3650
 	1    0    0    -1  
@@ -164,12 +164,12 @@ Wire Wire Line
 	5750 3900 5800 3900
 Connection ~ 5750 4000
 $Comp
-L good_things:NPIC6C595 U4
+L board-rescue:NPIC6C595-good_things U4
 U 1 1 61301332
 P 6150 2150
 F 0 "U4" H 6150 2825 50  0000 C CNN
 F 1 "NPIC6C596" H 6150 2734 50  0000 C CNN
-F 2 "Package_SO:SO-16_3.9x9.9mm_P1.27mm" H 6150 1700 50  0001 C CNN
+F 2 "Package_SO:STC_SOP-16_3.9x9.9mm_P1.27mm" H 6150 1700 50  0001 C CNN
 F 3 "" H 6150 1700 50  0001 C CNN
 	1    6150 2150
 	1    0    0    -1  
@@ -191,17 +191,6 @@ Wire Wire Line
 	5700 1700 5700 1800
 Wire Wire Line
 	5700 1800 5800 1800
-$Comp
-L Device:C_Small C7
-U 1 1 61301341
-P 5050 1800
-F 0 "C7" H 5142 1846 50  0000 L CNN
-F 1 "100n" H 5142 1755 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 5050 1800 50  0001 C CNN
-F 3 "~" H 5050 1800 50  0001 C CNN
-	1    5050 1800
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:GND #PWR017
 U 1 1 61301347
@@ -261,7 +250,7 @@ U 1 1 612E3F1C
 P 5050 3300
 F 0 "C8" H 5142 3346 50  0000 L CNN
 F 1 "100n" H 5142 3255 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 5050 3300 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5050 3300 50  0001 C CNN
 F 3 "~" H 5050 3300 50  0001 C CNN
 	1    5050 3300
 	1    0    0    -1  
@@ -287,27 +276,27 @@ Wire Wire Line
 Text Label 6000 2800 0    50   ~ 0
 shift_carry
 Text Label 6600 4300 0    50   ~ 0
-led_s0
+led_s0_ctrl
 $Comp
 L Device:LED_Small D1
 U 1 1 6134AD7D
-P 6800 1500
-F 0 "D1" V 6846 1430 50  0000 R CNN
-F 1 "red" V 6755 1430 50  0000 R CNN
-F 2 "LED_SMD:LED_1210_3225Metric" V 6800 1500 50  0001 C CNN
-F 3 "~" V 6800 1500 50  0001 C CNN
-	1    6800 1500
+P 8550 1500
+F 0 "D1" V 8596 1430 50  0000 R CNN
+F 1 "red" V 8505 1430 50  0000 R CNN
+F 2 "LED_SMD:LED_1210_3225Metric" V 8550 1500 50  0001 C CNN
+F 3 "~" V 8550 1500 50  0001 C CNN
+	1    8550 1500
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:LED_Small D2
 U 1 1 6134CDD1
-P 7050 1500
-F 0 "D2" V 7096 1430 50  0000 R CNN
-F 1 "red" V 7005 1430 50  0000 R CNN
-F 2 "LED_SMD:LED_1210_3225Metric" V 7050 1500 50  0001 C CNN
-F 3 "~" V 7050 1500 50  0001 C CNN
-	1    7050 1500
+P 8300 1500
+F 0 "D2" V 8346 1430 50  0000 R CNN
+F 1 "red" V 8255 1430 50  0000 R CNN
+F 2 "LED_SMD:LED_1210_3225Metric" V 8300 1500 50  0001 C CNN
+F 3 "~" V 8300 1500 50  0001 C CNN
+	1    8300 1500
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -324,19 +313,30 @@ $EndComp
 $Comp
 L Device:LED_Small D4
 U 1 1 6134D560
-P 7550 1500
-F 0 "D4" V 7596 1430 50  0000 R CNN
-F 1 "red" V 7505 1430 50  0000 R CNN
-F 2 "LED_SMD:LED_1210_3225Metric" V 7550 1500 50  0001 C CNN
-F 3 "~" V 7550 1500 50  0001 C CNN
-	1    7550 1500
+P 7050 1500
+F 0 "D4" V 7096 1430 50  0000 R CNN
+F 1 "red" V 7005 1430 50  0000 R CNN
+F 2 "LED_SMD:LED_1210_3225Metric" V 7050 1500 50  0001 C CNN
+F 3 "~" V 7050 1500 50  0001 C CNN
+	1    7050 1500
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:LED_Small D5
 U 1 1 6134D7B4
+P 6800 1500
+F 0 "D5" V 6846 1430 50  0000 R CNN
+F 1 "red" V 6755 1430 50  0000 R CNN
+F 2 "LED_SMD:LED_1210_3225Metric" V 6800 1500 50  0001 C CNN
+F 3 "~" V 6800 1500 50  0001 C CNN
+	1    6800 1500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_Small D7
+U 1 1 6134E01E
 P 7800 1500
-F 0 "D5" V 7846 1430 50  0000 R CNN
+F 0 "D7" V 7846 1430 50  0000 R CNN
 F 1 "red" V 7755 1430 50  0000 R CNN
 F 2 "LED_SMD:LED_1210_3225Metric" V 7800 1500 50  0001 C CNN
 F 3 "~" V 7800 1500 50  0001 C CNN
@@ -344,36 +344,14 @@ F 3 "~" V 7800 1500 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:LED_Small D6
-U 1 1 6134DC52
-P 8050 1500
-F 0 "D6" V 8096 1430 50  0000 R CNN
-F 1 "red" V 8005 1430 50  0000 R CNN
-F 2 "LED_SMD:LED_1210_3225Metric" V 8050 1500 50  0001 C CNN
-F 3 "~" V 8050 1500 50  0001 C CNN
-	1    8050 1500
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:LED_Small D7
-U 1 1 6134E01E
-P 8300 1500
-F 0 "D7" V 8346 1430 50  0000 R CNN
-F 1 "red" V 8255 1430 50  0000 R CNN
-F 2 "LED_SMD:LED_1210_3225Metric" V 8300 1500 50  0001 C CNN
-F 3 "~" V 8300 1500 50  0001 C CNN
-	1    8300 1500
-	0    -1   -1   0   
-$EndComp
-$Comp
 L Device:LED_Small D8
 U 1 1 61351816
-P 8550 1500
-F 0 "D8" V 8596 1430 50  0000 R CNN
-F 1 "red" V 8505 1430 50  0000 R CNN
-F 2 "LED_SMD:LED_1210_3225Metric" V 8550 1500 50  0001 C CNN
-F 3 "~" V 8550 1500 50  0001 C CNN
-	1    8550 1500
+P 7550 1500
+F 0 "D8" V 7596 1430 50  0000 R CNN
+F 1 "red" V 7505 1430 50  0000 R CNN
+F 2 "LED_SMD:LED_1210_3225Metric" V 7550 1500 50  0001 C CNN
+F 3 "~" V 7550 1500 50  0001 C CNN
+	1    7550 1500
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -582,27 +560,19 @@ Text Label 6600 3300 0    50   ~ 0
 led_m1
 Text Label 6600 3200 0    50   ~ 0
 led_m2
-Text Label 6600 2400 0    50   ~ 0
-led_m3
 Text Label 6600 2300 0    50   ~ 0
-led_m4
-Text Label 6600 2200 0    50   ~ 0
-led_m5
-Text Label 6600 2000 0    50   ~ 0
-led_h1
+led_h3
 Text Label 6600 1900 0    50   ~ 0
 led_h2
 Text Label 6600 1700 0    50   ~ 0
-led_h4
-Text Label 6600 1800 0    50   ~ 0
-led_h3
-Text Label 6600 2100 0    50   ~ 0
 led_h0
+Text Label 6600 1800 0    50   ~ 0
+led_h1
+Text Label 6600 2100 0    50   ~ 0
+led_m4
 Wire Wire Line
 	6800 1400 7050 1400
 Connection ~ 7050 1400
-Wire Wire Line
-	7050 1400 7300 1400
 Connection ~ 7300 1400
 Wire Wire Line
 	7300 1400 7550 1400
@@ -651,7 +621,7 @@ Wire Wire Line
 	6600 1400 6800 1400
 Connection ~ 6800 1400
 $Comp
-L good_things:RT8097AHGB U2
+L board-rescue:RT8097AHGB-good_things U2
 U 1 1 613E036C
 P 5500 5100
 F 0 "U2" H 5500 5425 50  0000 C CNN
@@ -722,7 +692,7 @@ U 1 1 6141F68E
 P 4650 5100
 F 0 "C5" H 4742 5146 50  0000 L CNN
 F 1 "22u" H 4742 5055 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 4650 5100 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4650 5100 50  0001 C CNN
 F 3 "~" H 4650 5100 50  0001 C CNN
 	1    4650 5100
 	1    0    0    -1  
@@ -773,7 +743,7 @@ U 1 1 614333E1
 P 7150 5100
 F 0 "C11" H 7242 5146 50  0000 L CNN
 F 1 "22u" H 7242 5055 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 7150 5100 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7150 5100 50  0001 C CNN
 F 3 "~" H 7150 5100 50  0001 C CNN
 	1    7150 5100
 	1    0    0    -1  
@@ -786,7 +756,7 @@ U 1 1 61438480
 P 6350 5100
 F 0 "C9" H 6442 5146 50  0000 L CNN
 F 1 "10n" H 6442 5055 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 6350 5100 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6350 5100 50  0001 C CNN
 F 3 "~" H 6350 5100 50  0001 C CNN
 	1    6350 5100
 	1    0    0    -1  
@@ -856,7 +826,7 @@ F 3 "" H 7150 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L good_things:RT8097AHGB U3
+L board-rescue:RT8097AHGB-good_things U3
 U 1 1 6146CF49
 P 5500 5900
 F 0 "U3" H 5500 6225 50  0000 C CNN
@@ -874,7 +844,7 @@ U 1 1 6146CF50
 P 4650 5900
 F 0 "C6" H 4742 5946 50  0000 L CNN
 F 1 "22u" H 4742 5855 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 4650 5900 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4650 5900 50  0001 C CNN
 F 3 "~" H 4650 5900 50  0001 C CNN
 	1    4650 5900
 	1    0    0    -1  
@@ -925,7 +895,7 @@ U 1 1 6146CF6C
 P 7150 5900
 F 0 "C12" H 7242 5946 50  0000 L CNN
 F 1 "22u" H 7242 5855 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 7150 5900 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7150 5900 50  0001 C CNN
 F 3 "~" H 7150 5900 50  0001 C CNN
 	1    7150 5900
 	1    0    0    -1  
@@ -938,7 +908,7 @@ U 1 1 6146CF73
 P 6350 5900
 F 0 "C10" H 6442 5946 50  0000 L CNN
 F 1 "10n" H 6442 5855 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 6350 5900 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6350 5900 50  0001 C CNN
 F 3 "~" H 6350 5900 50  0001 C CNN
 	1    6350 5900
 	1    0    0    -1  
@@ -1072,17 +1042,6 @@ Text GLabel 1950 6750 1    50   Input ~ 0
 vled
 Text Label 4400 5550 0    50   ~ 0
 vin
-$Comp
-L Jumper:SolderJumper_2_Open JP1
-U 1 1 614AD38C
-P 4100 2800
-F 0 "JP1" V 4054 2868 50  0000 L CNN
-F 1 "x" V 4145 2868 50  0000 L CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" H 4100 2800 50  0001 C CNN
-F 3 "~" H 4100 2800 50  0001 C CNN
-	1    4100 2800
-	0    1    1    0   
-$EndComp
 Connection ~ 1700 1800
 Wire Wire Line
 	850  1800 1700 1800
@@ -1091,10 +1050,6 @@ Wire Wire Line
 Connection ~ 1650 2200
 Wire Wire Line
 	1100 2200 1650 2200
-Wire Wire Line
-	3300 2500 3300 4300
-Wire Wire Line
-	3100 2500 3300 2500
 Text Label 3450 2950 0    50   ~ 0
 shift_data
 Wire Wire Line
@@ -1175,7 +1130,7 @@ U 1 1 61226712
 P 650 2000
 F 0 "J1" H 568 1575 50  0000 C CNN
 F 1 "programmer" H 568 1666 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 650 2000 50  0001 C CNN
+F 2 "good_things:TSM-105-01-L_SH" H 650 2000 50  0001 C CNN
 F 3 "~" H 650 2000 50  0001 C CNN
 	1    650  2000
 	-1   0    0    1   
@@ -1253,7 +1208,7 @@ U 1 1 6121DA61
 P 1050 1350
 F 0 "C1" H 1142 1396 50  0000 L CNN
 F 1 "100n" H 1142 1305 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 1050 1350 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 1050 1350 50  0001 C CNN
 F 3 "~" H 1050 1350 50  0001 C CNN
 	1    1050 1350
 	1    0    0    -1  
@@ -1283,7 +1238,6 @@ $EndComp
 Connection ~ 2600 1250
 Wire Wire Line
 	2600 1250 2600 1500
-Connection ~ 3250 1450
 $Comp
 L power:GND #PWR013
 U 1 1 6121BB5E
@@ -1298,19 +1252,16 @@ $EndComp
 Wire Wire Line
 	2800 1450 3250 1450
 Wire Wire Line
-	2800 1250 3250 1250
-Connection ~ 2800 1250
-Wire Wire Line
 	2600 1250 2800 1250
 $Comp
 L Device:C_Small C4
 U 1 1 6121B43A
-P 3250 1350
-F 0 "C4" H 3342 1396 50  0000 L CNN
-F 1 "100n" H 3342 1305 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 3250 1350 50  0001 C CNN
-F 3 "~" H 3250 1350 50  0001 C CNN
-	1    3250 1350
+P 5050 1800
+F 0 "C4" H 5142 1846 50  0000 L CNN
+F 1 "100n" H 5142 1755 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5050 1800 50  0001 C CNN
+F 3 "~" H 5050 1800 50  0001 C CNN
+	1    5050 1800
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1319,7 +1270,7 @@ U 1 1 6121A66F
 P 2800 1350
 F 0 "C2" H 2892 1396 50  0000 L CNN
 F 1 "1u" H 2892 1305 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 2800 1350 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2800 1350 50  0001 C CNN
 F 3 "~" H 2800 1350 50  0001 C CNN
 	1    2800 1350
 	1    0    0    -1  
@@ -1348,73 +1299,17 @@ F 3 "https://www.espressif.com/sites/default/files/documentation/0c-esp-wroom-02
 $EndComp
 Connection ~ 5500 2100
 Wire Wire Line
-	1650 2950 4100 2950
-Connection ~ 4100 2950
-Wire Wire Line
-	4100 2950 5300 2950
-Wire Wire Line
 	5400 2200 5400 2550
 Wire Wire Line
 	3950 2400 3950 2550
-Wire Wire Line
-	3950 2550 4250 2550
 Wire Wire Line
 	3100 2400 3950 2400
 Connection ~ 5400 2550
 Wire Wire Line
 	5400 2550 5400 3700
-$Comp
-L Jumper:SolderJumper_2_Open JP2
-U 1 1 61544617
-P 4250 2400
-F 0 "JP2" V 4204 2468 50  0000 L CNN
-F 1 "x" V 4295 2468 50  0000 L CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" H 4250 2400 50  0001 C CNN
-F 3 "~" H 4250 2400 50  0001 C CNN
-	1    4250 2400
-	0    1    1    0   
-$EndComp
-Connection ~ 4250 2550
-Wire Wire Line
-	4250 2550 5400 2550
-$Comp
-L Jumper:SolderJumper_2_Open JP3
-U 1 1 61544EC9
-P 4500 1900
-F 0 "JP3" H 4500 1675 50  0000 C CNN
-F 1 "x" H 4500 1766 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" H 4500 1900 50  0001 C CNN
-F 3 "~" H 4500 1900 50  0001 C CNN
-	1    4500 1900
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	3100 2200 4250 2200
-Wire Wire Line
-	4250 2200 4250 2250
-Wire Wire Line
-	3100 2300 4100 2300
-Wire Wire Line
-	4100 2300 4100 2650
-Wire Wire Line
-	3400 2100 4650 2100
-Wire Wire Line
-	4650 1900 4650 2100
-Connection ~ 4650 2100
-Wire Wire Line
-	4650 2100 5500 2100
 Wire Wire Line
 	3400 1800 3400 2100
-Wire Wire Line
-	3100 1900 4350 1900
 NoConn ~ 3100 2000
-NoConn ~ 3100 2100
-Text Label 3450 2300 0    50   ~ 0
-shift_data_backup
-Text Label 3450 2200 0    50   ~ 0
-shift_clk_backup
-Text Label 3450 1900 0    50   ~ 0
-store_clk_backup
 Wire Wire Line
 	3300 4300 10200 4300
 $Comp
@@ -1430,4 +1325,87 @@ F 3 "" H 10800 4500 50  0001 C CNN
 $EndComp
 Text Notes 2800 1100 0    50   ~ 0
 use i2s driver for registers, could be cool :D. \nif that fails solder jumpers and bitbang it
+Text Label 5800 5000 0    50   ~ 0
+3v3_sw
+Text Label 5800 5800 0    50   ~ 0
+vled_sw
+Text Label 5850 6050 0    50   ~ 0
+vled_fb
+Text Label 5800 5250 0    50   ~ 0
+3v3_fb
+Text Label 10800 3800 3    50   ~ 0
+led_s0
+Text Label 1550 1200 0    50   ~ 0
+mcu_en
+NoConn ~ 3100 2500
+Wire Wire Line
+	1650 2950 5300 2950
+Wire Wire Line
+	3950 2550 5400 2550
+Wire Wire Line
+	3400 2100 5500 2100
+NoConn ~ 3100 2200
+NoConn ~ 3100 2300
+Wire Wire Line
+	3300 1900 3100 1900
+Wire Wire Line
+	3300 1900 3300 4300
+NoConn ~ 3100 2100
+Text Label 6600 2400 0    50   ~ 0
+led_h4
+Wire Wire Line
+	7050 1400 7300 1400
+Text Label 6600 2200 0    50   ~ 0
+led_m5
+Text Label 6600 2000 0    50   ~ 0
+led_m3
+$Comp
+L Device:LED_Small D6
+U 1 1 6134DC52
+P 8050 1500
+F 0 "D6" V 8096 1430 50  0000 R CNN
+F 1 "red" V 8005 1430 50  0000 R CNN
+F 2 "LED_SMD:LED_1210_3225Metric" V 8050 1500 50  0001 C CNN
+F 3 "~" V 8050 1500 50  0001 C CNN
+	1    8050 1500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 61480981
+P 3050 6850
+F 0 "H1" V 3004 7000 50  0000 L CNN
+F 1 "MountingHole_Pad" V 3095 7000 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 3050 6850 50  0001 C CNN
+F 3 "~" H 3050 6850 50  0001 C CNN
+	1    3050 6850
+	0    1    1    0   
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 61480B1D
+P 3050 7050
+F 0 "H2" V 3004 7200 50  0000 L CNN
+F 1 "MountingHole_Pad" V 3095 7200 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 3050 7050 50  0001 C CNN
+F 3 "~" H 3050 7050 50  0001 C CNN
+	1    3050 7050
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0101
+U 1 1 61488EAA
+P 2950 7200
+F 0 "#PWR0101" H 2950 6950 50  0001 C CNN
+F 1 "GND" H 2955 7027 50  0000 C CNN
+F 2 "" H 2950 7200 50  0001 C CNN
+F 3 "" H 2950 7200 50  0001 C CNN
+	1    2950 7200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 7200 2950 7050
+Connection ~ 2950 7050
+Wire Wire Line
+	2950 7050 2950 6850
 $EndSCHEMATC
