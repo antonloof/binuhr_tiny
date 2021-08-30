@@ -26,17 +26,6 @@ F 3 "~" H 1600 5700 50  0001 C CNN
 $EndComp
 NoConn ~ 1350 6150
 $Comp
-L Connector:TestPoint_2Pole TP3
-U 1 1 612CDFC5
-P 2050 5750
-F 0 "TP3" V 2004 5808 50  0000 L CNN
-F 1 "TestPoint_2Pole" V 2095 5808 50  0000 L CNN
-F 2 "good_things:TestPoint2Pole" H 2050 5750 50  0001 C CNN
-F 3 "~" H 2050 5750 50  0001 C CNN
-	1    2050 5750
-	0    1    1    0   
-$EndComp
-$Comp
 L power:GND #PWR06
 U 1 1 612CF1A6
 P 1450 6150
@@ -47,23 +36,9 @@ F 3 "" H 1450 6150 50  0001 C CNN
 	1    1450 6150
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR09
-U 1 1 612CF450
-P 2050 5950
-F 0 "#PWR09" H 2050 5700 50  0001 C CNN
-F 1 "GND" H 2055 5777 50  0000 C CNN
-F 2 "" H 2050 5950 50  0001 C CNN
-F 3 "" H 2050 5950 50  0001 C CNN
-	1    2050 5950
-	1    0    0    -1  
-$EndComp
 NoConn ~ 1750 5750
 NoConn ~ 1750 5850
 NoConn ~ 1750 5950
-Wire Wire Line
-	2050 5550 1750 5550
-Connection ~ 2050 5550
 $Comp
 L Device:C_Small C3
 U 1 1 612D2754
@@ -77,8 +52,6 @@ F 3 "~" H 2850 5700 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2850 5600 2850 5550
-Wire Wire Line
-	2050 5550 2850 5550
 $Comp
 L power:GND #PWR012
 U 1 1 612D3988
@@ -109,36 +82,14 @@ Wire Wire Line
 	5700 3300 5800 3300
 Connection ~ 5700 3200
 $Comp
-L Connector:TestPoint_2Pole TP1
-U 1 1 612F4595
-P 1250 6900
-F 0 "TP1" V 1204 6958 50  0000 L CNN
-F 1 "TestPoint_2Pole" V 1295 6958 50  0000 L CNN
-F 2 "good_things:TestPoint2Pole" H 1250 6900 50  0001 C CNN
-F 3 "~" H 1250 6900 50  0001 C CNN
-	1    1250 6900
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GND #PWR04
-U 1 1 612F459B
-P 1250 7100
-F 0 "#PWR04" H 1250 6850 50  0001 C CNN
-F 1 "GND" H 1255 6927 50  0000 C CNN
-F 2 "" H 1250 7100 50  0001 C CNN
-F 3 "" H 1250 7100 50  0001 C CNN
-	1    1250 7100
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+3V3 #PWR03
 U 1 1 612F4C8A
-P 1250 6700
-F 0 "#PWR03" H 1250 6550 50  0001 C CNN
-F 1 "+3V3" H 1265 6873 50  0000 C CNN
-F 2 "" H 1250 6700 50  0001 C CNN
-F 3 "" H 1250 6700 50  0001 C CNN
-	1    1250 6700
+P 1300 6700
+F 0 "#PWR03" H 1300 6550 50  0001 C CNN
+F 1 "+3V3" H 1315 6873 50  0000 C CNN
+F 2 "" H 1300 6700 50  0001 C CNN
+F 3 "" H 1300 6700 50  0001 C CNN
+	1    1300 6700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1016,28 +967,6 @@ vled
 Wire Wire Line
 	7450 5800 7150 5800
 Connection ~ 7150 5800
-$Comp
-L Connector:TestPoint_2Pole TP2
-U 1 1 6149F2E6
-P 1950 6950
-F 0 "TP2" V 1904 7008 50  0000 L CNN
-F 1 "TestPoint_2Pole" V 1995 7008 50  0000 L CNN
-F 2 "good_things:TestPoint2Pole" H 1950 6950 50  0001 C CNN
-F 3 "~" H 1950 6950 50  0001 C CNN
-	1    1950 6950
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GND #PWR08
-U 1 1 6149F2EC
-P 1950 7150
-F 0 "#PWR08" H 1950 6900 50  0001 C CNN
-F 1 "GND" H 1955 6977 50  0000 C CNN
-F 2 "" H 1950 7150 50  0001 C CNN
-F 3 "" H 1950 7150 50  0001 C CNN
-	1    1950 7150
-	1    0    0    -1  
-$EndComp
 Text GLabel 1950 6750 1    50   Input ~ 0
 vled
 Text Label 4400 5550 0    50   ~ 0
@@ -1176,54 +1105,11 @@ F 3 "" H 1400 950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2600 1150 2600 1250
-Connection ~ 1050 1450
-$Comp
-L power:GND #PWR02
-U 1 1 6121EE15
-P 1050 1450
-F 0 "#PWR02" H 1050 1200 50  0001 C CNN
-F 1 "GND" H 1055 1277 50  0000 C CNN
-F 2 "" H 1050 1450 50  0001 C CNN
-F 3 "" H 1050 1450 50  0001 C CNN
-	1    1050 1450
-	1    0    0    -1  
-$EndComp
 NoConn ~ 2300 1550
-Wire Wire Line
-	1050 1450 1400 1450
-Wire Wire Line
-	1050 1200 1400 1200
-Wire Wire Line
-	1050 1250 1050 1200
-Wire Wire Line
-	1400 1200 1400 1250
-Connection ~ 1400 1200
 Wire Wire Line
 	1400 1150 1400 1200
 Wire Wire Line
 	2000 1200 1400 1200
-$Comp
-L Device:C_Small C1
-U 1 1 6121DA61
-P 1050 1350
-F 0 "C1" H 1142 1396 50  0000 L CNN
-F 1 "100n" H 1142 1305 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 1050 1350 50  0001 C CNN
-F 3 "~" H 1050 1350 50  0001 C CNN
-	1    1050 1350
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small R2
-U 1 1 6121D2A0
-P 1400 1350
-F 0 "R2" H 1459 1396 50  0000 L CNN
-F 1 "10k" H 1459 1305 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 1400 1350 50  0001 C CNN
-F 3 "~" H 1400 1350 50  0001 C CNN
-	1    1400 1350
-	1    0    0    -1  
-$EndComp
 $Comp
 L Device:R_Small R1
 U 1 1 6121C777
@@ -1408,4 +1294,28 @@ Wire Wire Line
 Connection ~ 2950 7050
 Wire Wire Line
 	2950 7050 2950 6850
+$Comp
+L Connector:TestPoint TP3
+U 1 1 616DF0FA
+P 1950 6750
+F 0 "TP3" H 2008 6868 50  0000 L CNN
+F 1 "TestPoint" H 2008 6777 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 2150 6750 50  0001 C CNN
+F 3 "~" H 2150 6750 50  0001 C CNN
+	1    1950 6750
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:TestPoint TP1
+U 1 1 616DFA07
+P 1300 6700
+F 0 "TP1" H 1358 6818 50  0000 L CNN
+F 1 "TestPoint" H 1358 6727 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 1500 6700 50  0001 C CNN
+F 3 "~" H 1500 6700 50  0001 C CNN
+	1    1300 6700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1750 5550 2850 5550
 $EndSCHEMATC
