@@ -84,12 +84,12 @@ Connection ~ 5700 3200
 $Comp
 L power:+3V3 #PWR03
 U 1 1 612F4C8A
-P 1300 6700
-F 0 "#PWR03" H 1300 6550 50  0001 C CNN
-F 1 "+3V3" H 1315 6873 50  0000 C CNN
-F 2 "" H 1300 6700 50  0001 C CNN
-F 3 "" H 1300 6700 50  0001 C CNN
-	1    1300 6700
+P 1250 6900
+F 0 "#PWR03" H 1250 6750 50  0001 C CNN
+F 1 "+3V3" H 1265 7073 50  0000 C CNN
+F 2 "" H 1250 6900 50  0001 C CNN
+F 3 "" H 1250 6900 50  0001 C CNN
+	1    1250 6900
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -967,7 +967,7 @@ vled
 Wire Wire Line
 	7450 5800 7150 5800
 Connection ~ 7150 5800
-Text GLabel 1950 6750 1    50   Input ~ 0
+Text GLabel 1900 6950 1    50   Input ~ 0
 vled
 Text Label 4400 5550 0    50   ~ 0
 vin
@@ -1002,10 +1002,6 @@ Text Label 3450 2400 0    50   ~ 0
 shift_clk
 Text Label 3450 2100 0    50   ~ 0
 store_clk
-Wire Wire Line
-	3400 1800 3100 1800
-Wire Wire Line
-	3400 1700 3100 1700
 $Comp
 L power:GND #PWR011
 U 1 1 61218B17
@@ -1105,7 +1101,6 @@ F 3 "" H 1400 950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2600 1150 2600 1250
-NoConn ~ 2300 1550
 Wire Wire Line
 	1400 1150 1400 1200
 Wire Wire Line
@@ -1172,24 +1167,11 @@ F 3 "" H 2600 1150 50  0001 C CNN
 	1    2600 1150
 	1    0    0    -1  
 $EndComp
-$Comp
-L RF_Module:ESP-WROOM-02 U1
-U 1 1 61216F95
-P 2600 2100
-F 0 "U1" H 2950 1550 50  0000 C CNN
-F 1 "ESP-WROOM-02" H 2200 1550 50  0000 C CNN
-F 2 "RF_Module:ESP-WROOM-02" H 3200 1550 50  0001 C CNN
-F 3 "https://www.espressif.com/sites/default/files/documentation/0c-esp-wroom-02_datasheet_en.pdf" H 2650 3600 50  0001 C CNN
-	1    2600 2100
-	1    0    0    -1  
-$EndComp
 Connection ~ 5500 2100
 Wire Wire Line
 	5400 2200 5400 2550
 Wire Wire Line
 	3950 2400 3950 2550
-Wire Wire Line
-	3100 2400 3950 2400
 Connection ~ 5400 2550
 Wire Wire Line
 	5400 2550 5400 3700
@@ -1215,7 +1197,7 @@ Text Label 5800 5000 0    50   ~ 0
 3v3_sw
 Text Label 5800 5800 0    50   ~ 0
 vled_sw
-Text Label 5850 6050 0    50   ~ 0
+Text Label 5800 6050 0    50   ~ 0
 vled_fb
 Text Label 5800 5250 0    50   ~ 0
 3v3_fb
@@ -1232,8 +1214,6 @@ Wire Wire Line
 	3400 2100 5500 2100
 NoConn ~ 3100 2200
 NoConn ~ 3100 2300
-Wire Wire Line
-	3300 1900 3100 1900
 Wire Wire Line
 	3300 1900 3300 4300
 NoConn ~ 3100 2100
@@ -1297,25 +1277,44 @@ Wire Wire Line
 $Comp
 L Connector:TestPoint TP3
 U 1 1 616DF0FA
-P 1950 6750
-F 0 "TP3" H 2008 6868 50  0000 L CNN
-F 1 "TestPoint" H 2008 6777 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 2150 6750 50  0001 C CNN
-F 3 "~" H 2150 6750 50  0001 C CNN
-	1    1950 6750
+P 1900 6950
+F 0 "TP3" H 1958 7068 50  0000 L CNN
+F 1 "TestPoint" H 1958 6977 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 2100 6950 50  0001 C CNN
+F 3 "~" H 2100 6950 50  0001 C CNN
+	1    1900 6950
 	-1   0    0    1   
 $EndComp
 $Comp
 L Connector:TestPoint TP1
 U 1 1 616DFA07
-P 1300 6700
-F 0 "TP1" H 1358 6818 50  0000 L CNN
-F 1 "TestPoint" H 1358 6727 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 1500 6700 50  0001 C CNN
-F 3 "~" H 1500 6700 50  0001 C CNN
-	1    1300 6700
+P 1250 6900
+F 0 "TP1" H 1308 7018 50  0000 L CNN
+F 1 "TestPoint" H 1308 6927 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 1450 6900 50  0001 C CNN
+F 3 "~" H 1450 6900 50  0001 C CNN
+	1    1250 6900
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	1750 5550 2850 5550
+Wire Wire Line
+	3100 2400 3950 2400
+Wire Wire Line
+	3300 1900 3100 1900
+Wire Wire Line
+	3400 1800 3100 1800
+Wire Wire Line
+	3400 1700 3100 1700
+$Comp
+L RF_Module:ESP-WROOM-02 U1
+U 1 1 61216F95
+P 2600 2100
+F 0 "U1" H 2950 1550 50  0000 C CNN
+F 1 "ESP-WROOM-02" H 2200 1550 50  0000 C CNN
+F 2 "RF_Module:ESP-WROOM-02" H 3200 1550 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/0c-esp-wroom-02_datasheet_en.pdf" H 2650 3600 50  0001 C CNN
+	1    2600 2100
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
