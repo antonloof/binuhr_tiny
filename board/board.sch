@@ -590,7 +590,7 @@ U 1 1 613F5DF9
 P 3200 5550
 F 0 "FB1" V 2963 5550 50  0000 C CNN
 F 1 "1A" V 3054 5550 50  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric" V 3130 5550 50  0001 C CNN
+F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 3130 5550 50  0001 C CNN
 F 3 "~" H 3200 5550 50  0001 C CNN
 	1    3200 5550
 	0    1    1    0   
@@ -973,29 +973,22 @@ Text Label 4400 5550 0    50   ~ 0
 vin
 Connection ~ 1700 1800
 Wire Wire Line
-	850  1800 1700 1800
-Wire Wire Line
 	1000 2300 2100 2300
-Connection ~ 1650 2200
-Wire Wire Line
-	1100 2200 1650 2200
 Text Label 3450 2950 0    50   ~ 0
 shift_data
 Wire Wire Line
-	1650 2750 1650 2950
+	1850 2750 1850 2950
 Wire Wire Line
-	1650 2200 2100 2200
-Wire Wire Line
-	1650 2550 1650 2200
+	1850 2550 1850 2200
 $Comp
 L Device:Net-Tie_2 NT1
 U 1 1 61328909
-P 1650 2650
-F 0 "NT1" H 1650 2831 50  0000 C CNN
-F 1 "Net-Tie_2" H 1650 2740 50  0000 C CNN
-F 2 "NetTie:NetTie-2_SMD_Pad0.5mm" H 1650 2650 50  0001 C CNN
-F 3 "~" H 1650 2650 50  0001 C CNN
-	1    1650 2650
+P 1850 2650
+F 0 "NT1" H 1850 2831 50  0000 C CNN
+F 1 "Net-Tie_2" H 1850 2740 50  0000 C CNN
+F 2 "NetTie:NetTie-2_SMD_Pad0.5mm" H 1850 2650 50  0001 C CNN
+F 3 "~" H 1850 2650 50  0001 C CNN
+	1    1850 2650
 	0    -1   -1   0   
 $EndComp
 Text Label 3450 2400 0    50   ~ 0
@@ -1020,20 +1013,16 @@ Wire Wire Line
 	1700 1750 1700 1800
 Text Label 1200 1800 0    50   ~ 0
 rst
-Text Label 1200 2300 0    50   ~ 0
+Text Label 1350 2300 0    50   ~ 0
 prog_tx
-Text Label 1200 2200 0    50   ~ 0
+Text Label 1350 2200 0    50   ~ 0
 prog_rx
 Text GLabel 3400 1700 2    50   Input ~ 0
 boot
-Text GLabel 1150 1900 2    50   Input ~ 0
+Text GLabel 1400 1900 2    50   Input ~ 0
 boot
 Wire Wire Line
-	850  1900 1150 1900
-Wire Wire Line
 	1100 2000 850  2000
-Wire Wire Line
-	1100 2200 1100 2000
 Wire Wire Line
 	1000 2100 850  2100
 Wire Wire Line
@@ -1130,10 +1119,6 @@ F 3 "" H 3250 1450 50  0001 C CNN
 	1    3250 1450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2800 1450 3250 1450
-Wire Wire Line
-	2600 1250 2800 1250
 $Comp
 L Device:C_Small C4
 U 1 1 6121B43A
@@ -1148,12 +1133,12 @@ $EndComp
 $Comp
 L Device:C_Small C2
 U 1 1 6121A66F
-P 2800 1350
-F 0 "C2" H 2892 1396 50  0000 L CNN
-F 1 "1u" H 2892 1305 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 2800 1350 50  0001 C CNN
-F 3 "~" H 2800 1350 50  0001 C CNN
-	1    2800 1350
+P 3250 1350
+F 0 "C2" H 3342 1396 50  0000 L CNN
+F 1 "1u" H 3342 1305 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3250 1350 50  0001 C CNN
+F 3 "~" H 3250 1350 50  0001 C CNN
+	1    3250 1350
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1206,8 +1191,6 @@ led_s0
 Text Label 1550 1200 0    50   ~ 0
 mcu_en
 NoConn ~ 3100 2500
-Wire Wire Line
-	1650 2950 5300 2950
 Wire Wire Line
 	3950 2550 5400 2550
 Wire Wire Line
@@ -1317,4 +1300,98 @@ F 3 "https://www.espressif.com/sites/default/files/documentation/0c-esp-wroom-02
 	1    2600 2100
 	1    0    0    -1  
 $EndComp
+$Comp
+L Device:C_Small C1
+U 1 1 6199D2C8
+P 950 2600
+F 0 "C1" H 1042 2646 50  0000 L CNN
+F 1 "100n" H 1042 2555 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 950 2600 50  0001 C CNN
+F 3 "~" H 950 2600 50  0001 C CNN
+	1    950  2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0102
+U 1 1 6199DA35
+P 950 2700
+F 0 "#PWR0102" H 950 2450 50  0001 C CNN
+F 1 "GND" H 955 2527 50  0000 C CNN
+F 2 "" H 950 2700 50  0001 C CNN
+F 3 "" H 950 2700 50  0001 C CNN
+	1    950  2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R2
+U 1 1 6199E4A9
+P 3950 3200
+F 0 "R2" H 4009 3246 50  0000 L CNN
+F 1 "10k" H 4009 3155 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 3950 3200 50  0001 C CNN
+F 3 "~" H 3950 3200 50  0001 C CNN
+	1    3950 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3950 3100 3950 2550
+Wire Wire Line
+	850  1800 950  1800
+Connection ~ 3950 2550
+$Comp
+L power:GND #PWR0103
+U 1 1 619A705E
+P 3950 3300
+F 0 "#PWR0103" H 3950 3050 50  0001 C CNN
+F 1 "GND" H 3955 3127 50  0000 C CNN
+F 2 "" H 3950 3300 50  0001 C CNN
+F 3 "" H 3950 3300 50  0001 C CNN
+	1    3950 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1100 2200 1100 2000
+Wire Wire Line
+	950  2500 950  1800
+Connection ~ 950  1800
+Wire Wire Line
+	950  1800 1700 1800
+Wire Wire Line
+	2600 1250 3250 1250
+Connection ~ 1850 2200
+Wire Wire Line
+	1850 2200 2100 2200
+Wire Wire Line
+	1850 2950 5300 2950
+Wire Wire Line
+	1100 2200 1850 2200
+$Comp
+L Device:C_Small C7
+U 1 1 619DD11C
+P 1300 2600
+F 0 "C7" H 1392 2646 50  0000 L CNN
+F 1 "100n" H 1392 2555 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 1300 2600 50  0001 C CNN
+F 3 "~" H 1300 2600 50  0001 C CNN
+	1    1300 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 619DD122
+P 1300 2700
+F 0 "#PWR0104" H 1300 2450 50  0001 C CNN
+F 1 "GND" H 1305 2527 50  0000 C CNN
+F 2 "" H 1300 2700 50  0001 C CNN
+F 3 "" H 1300 2700 50  0001 C CNN
+	1    1300 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	850  1900 1300 1900
+Wire Wire Line
+	1300 1900 1300 2500
+Connection ~ 1300 1900
+Wire Wire Line
+	1300 1900 1400 1900
 $EndSCHEMATC
