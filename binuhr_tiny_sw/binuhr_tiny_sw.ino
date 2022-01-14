@@ -1,8 +1,9 @@
 #include <EEPROM.h>
 #include <ESP8266WebServer.h>
-#include <NTPClient.h>
 #include <ESP8266WiFi.h>
-#include <WiFiUdp.h>
+#include <time.h>
+#include <ArduinoOTA.h>
+
 
 #define MAX_WIFI_RETRY 20
 #define MAX_STR_LEN 64
@@ -14,10 +15,10 @@
 #define EXTRA_LED_PIN 4
 #define SHIFT_CLK_PIN 15
 #define STORE_CLK_PIN 2
-
-// Define NTP Client to get time
-WiFiUDP ntp_udp;
-NTPClient timeClient(ntp_udp);
+// taken from europe/stockholm https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
+#define TZ_INFO "CET-1CEST,M3.5.0,M10.5.0/3"
+#define NTP_SERVER "ntp.se"
+#define BINUHR_TINY_HOSTNAME "binuhr_tiny"
 
 void store_data(int data);
 void update_ntp();
@@ -30,7 +31,9 @@ void handle_set_wifi();
 void try_connect_wifi();
 String read_string_from_eeprom(int addr, int len);
 
-long int minute=0, hour=0, second=0;
+time_t t1, t2;
+time_t *now, *last_update;
+tm tm_now, tm_last;
 
 long int hour_map[] = {15, 14, 13, 9, 8};
 long int minute_map[] = {5, 6, 7, 12, 11, 10};
@@ -39,7 +42,6 @@ long int second_map[] = {16, 0, 1, 2, 3, 4}; // s0 is taken care of by the extra
 ESP8266WebServer server(80);
 
 long last_led_update_ms = millis();
-int utc_offset_seconds = 0;
 int wifi_connected = 0;
 
 int no_wifi_data = 0;
@@ -47,18 +49,15 @@ int no_wifi_retry_counter = 0;
 
 void setup()
 {
+  now = &t1;
+  last_update = &t2;
   Serial.begin(115200);
   EEPROM.begin(512);
-  utc_offset_seconds = (EEPROM.read(0) << 8) + EEPROM.read(1);
   
+  configTime(TZ_INFO, NTP_SERVER);
   try_connect_wifi();
-  Serial.println(EEPROM.read(0));
-  Serial.println(EEPROM.read(1));
-  
-  timeClient.setPoolServerName("ntp.se");
-  timeClient.setTimeOffset(utc_offset_seconds);
-  timeClient.begin();
-  WiFi.hostname("bin_uhr_tiny");
+
+  WiFi.hostname(BINUHR_TINY_HOSTNAME);
   
   pinMode(EXTRA_LED_PIN, OUTPUT);
   pinMode(DATA_PIN, OUTPUT);
@@ -68,27 +67,43 @@ void setup()
   digitalWrite(DATA_PIN, 0);
   digitalWrite(SHIFT_CLK_PIN, 0);
   digitalWrite(STORE_CLK_PIN, 0);
+  
+  // config OTA
+  ArduinoOTA.setHostname(BINUHR_TINY_HOSTNAME);
+  ArduinoOTA.onStart([]() {
+    Serial.println("Start");
+  });
+  ArduinoOTA.onEnd([]() {
+    Serial.println("\nEnd");
+  });
+  ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
+    Serial.printf("Progress: %u%%\r", (progress / (total / 100)));
+  });
+  ArduinoOTA.onError([](ota_error_t error) {
+    Serial.printf("Error[%u]: ", error);
+    if (error == OTA_AUTH_ERROR) Serial.println("Auth Failed");
+    else if (error == OTA_BEGIN_ERROR) Serial.println("Begin Failed");
+    else if (error == OTA_CONNECT_ERROR) Serial.println("Connect Failed");
+    else if (error == OTA_RECEIVE_ERROR) Serial.println("Receive Failed");
+    else if (error == OTA_END_ERROR) Serial.println("End Failed");
+  });
+  ArduinoOTA.begin();
 
-  update_ntp();
   update_display();
   
   server.on("/", handle_index);
-  server.on("/set_utc", handle_set_utc_offset);
   server.on("/set_wifi", handle_set_wifi);
-  server.begin();
+  Serial.println(WiFi.localIP());
+  
 }
 
 void loop() {
-  long current_time = millis();
   // handle updating the clock
-  if (last_led_update_ms + 1000 < current_time) {
+  time(now);
+  localtime_r(now, &tm_now);
+  if (tm_now.tm_sec != tm_last.tm_sec) {
     if (wifi_connected) {
-      // update clock
-      if (second == 60) {
-        update_ntp();
-      }
       update_display();
-      second++;  
     } else {
       // blink display as error
       store_data(no_wifi_data);
@@ -101,31 +116,26 @@ void loop() {
       }
     }
     
-    last_led_update_ms = current_time;
+    last_update = now;
+    localtime_r(last_update, &tm_last);
   }
   server.handleClient();
+  ArduinoOTA.handle();
 }
 
 void update_display() {
   long int data = 0;
   for (int i = 0; i < 5; i++) {
-    data |= ((hour & (1 << i)) >> i) << hour_map[i];
+    data |= ((tm_now.tm_hour & (1 << i)) >> i) << hour_map[i];
   }
   for (int i = 0; i < 6; i++) {
-    data |= ((minute & (1 << i)) >> i) << minute_map[i];
+    data |= ((tm_now.tm_min & (1 << i)) >> i) << minute_map[i];
   }
   for (int i = 0; i < 6; i++) {
-    data |= ((second & (1 << i)) >> i) << second_map[i];
+    data |= ((tm_now.tm_sec & (1 << i)) >> i) << second_map[i];
   }
   store_data(data);
-  digitalWrite(EXTRA_LED_PIN, second & 1);
-}
-
-void update_ntp() {
-  timeClient.update();
-  second = timeClient.getSeconds();
-  minute = timeClient.getMinutes();
-  hour = timeClient.getHours();
+  digitalWrite(EXTRA_LED_PIN, tm_now.tm_sec & 1);
 }
 
 void store_data(int data) {
@@ -145,47 +155,12 @@ void handle_index() {
   
   message = "<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"></head><body>";
   message += "<h1>BinUhrTiny</h1>";
-  if (wifi_connected) {
-    // sorry about this mess, its a form for chaning the utc offset
-    message += "<form action=\"/set_utc\">";
-    message += "<label for=\"utc_in\">Offset in hours: </label><input name=\"utc_in\" id=\"utc_in\" type=\"number\" value=\"" + String(utc_offset_seconds/60/60) + "\">";
-    message += "<input type=\"submit\" value=\"Update\"/></form>";
-  } else {
-      message += "<form action=\"/set_wifi\">";
-      message += "<label for=\"ssid\">SSID: </label><input id=\"ssid\" name=\"ssid\" /><br>";
-      message += "<label for=\"pass\">Password: </label><input id=\"password\" type=\"password\" name=\"pass\" />";
-      message += "<input type=\"submit\" value=\"Update\"/></form>";
-  }
+  message += "<form action=\"/set_wifi\">";
+  message += "<label for=\"ssid\">SSID: </label><input id=\"ssid\" name=\"ssid\" /><br>";
+  message += "<label for=\"pass\">Password: </label><input id=\"password\" type=\"password\" name=\"pass\" />";
+  message += "<input type=\"submit\" value=\"Update\"/></form>";
   message += "</body></html>";
   server.send(200, "text/html", message);
-}
-
-void handle_set_utc_offset() {
-  // find the utc arg
-  for (int i = 0; i < server.args(); i++) {
-    if (server.argName(i) == "utc_in") {
-      String val = server.arg(i);
-      int intval = -1;
-      if (val == "0") {
-        intval = 0;
-      } else {
-        int parsed_value = val.toInt();
-        if (parsed_value) {
-          intval = parsed_value * 60 * 60;
-        }
-      }
-      if (intval != -1) {
-        EEPROM.write(0, (intval & 0xFF00) >> 8);
-        EEPROM.write(1, intval & 0xFF);
-        EEPROM.commit();
-        utc_offset_seconds = intval;
-        timeClient.setTimeOffset(utc_offset_seconds);
-        update_ntp();
-      }
-    }
-  }
-  server.sendHeader("Location", String("/"), true);
-  server.send(302, "text/plain", "");
 }
 
 void handle_set_wifi() {
